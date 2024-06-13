@@ -1,10 +1,8 @@
 main(){
-  int age = 4;
+  int age = 42;
   if(age>21){
     print('man');
-  } else if(age >= 11){
+  } else if(age >= 11)
     print('bay');
 
-  } else (age > 5);
-  print('child');
-}
+  }
