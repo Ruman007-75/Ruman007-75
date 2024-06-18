@@ -15,9 +15,9 @@ void main() {
   //   print(myName);
   // }
   print(myName ?? 'Hello'); // default / soft unwrap
-  // print(myName!); // force unwrap [! ei chnno takle Unhandled exception dekay ]
+  //print(myName!); // force unwrap [! ei chnno takle Unhandled exception dekay ]
 
-  myName = 'Hasib';
-  print(myName);
-  // print(university);
+  // myName = 'Hasib';
+  // print(myName);
+  // // print(university);
 }

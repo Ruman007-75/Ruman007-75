@@ -1,5 +1,5 @@
 void main() {
-  int day = 4;
+  int day = 2;
   if (day == 1) {
     print('saturday');
   } else if (day == 2) {

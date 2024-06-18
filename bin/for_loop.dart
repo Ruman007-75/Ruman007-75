@@ -1,3 +1,5 @@
+
+
 void main(){
 
   for(int i=0; i<=10; i=i+1 ){
@@ -31,7 +33,7 @@ void main(){
    // print(students[i]);
     print('students $i: ${students[i]}');
   }
-  // for in 
+  // for in
   for (String student in students){
     print('student name : $student');
   };
@@ -44,12 +46,9 @@ void main(){
     'minoj': {'address': 'Dhka', 'age': '40',},
     'salik': {'address': 'CTG', 'age': '50',},
     'Sujon': {'address': 'CTG', 'age': '60',}
-
-
   };
 
-
-for (String key in friends .keys){
+  for (String key in friends .keys){
   print('My friends name is $key. Address: ${friends[key]!['address']} Age: ${friends [key]!['age']}');
 }
 for (Map<String, String> details in friends.values){
@@ -57,7 +56,6 @@ for (Map<String, String> details in friends.values){
   }
 }
 
-// 01705432931
 void greeting(){
   print('hlw how are you');
   print('welcome to my chanel');
