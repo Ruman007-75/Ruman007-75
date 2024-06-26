@@ -1,3 +1,4 @@
+//class keyword (capital word diye shuru kori)
 class Monitor{
   static const String sample = 'sample';
   final String realme= 'Realme';
@@ -5,7 +6,8 @@ class Monitor{
   String model ='';
 
   String _internalHardwareno = '44545lksjdfksd';
-  //constructor
+
+  //constructor (class er same nam a Method hole)
   Monitor(String companyNmane, String model) {
     this.companyName = companyName;
     this.model = model;
