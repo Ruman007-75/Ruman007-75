@@ -26,8 +26,13 @@ class Home extends StatelessWidget {
           title: Text('Home'),
           backgroundColor: Colors.white,
         ),
-        body: Column(
+     /*   body: Column(
           // vertically arrange kore
+          mainAxisSize: MainAxisSize.max,
+          //all site lekha soman, space tik, line space tik
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // start, end kora line ke,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('hellow'),
             Text('Ruman'),
@@ -38,6 +43,49 @@ class Home extends StatelessWidget {
                 child: Text('Click here')),
             IconButton(onPressed: (){}, icon: Icon(Icons.access_time))
           ],
-        ));
+        )); */
+   /* body: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // horizontal align
+        Text('hellow world\nhelloworld'),
+        Text('hellow world'),
+        Text('hellow world'),
+        Text('hellow world'),
+        Text('hellow world'),
+      ],
+
+    ),
+    ),
+*/
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Column(
+              children: [
+                Text('Colomn 1')
+              ],
+        
+            ),
+            Column(
+              children: [
+                Text('Colomn 2')
+              ],
+        
+            ),
+            Column(
+              children: [
+                Text('Colomn 3')
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
