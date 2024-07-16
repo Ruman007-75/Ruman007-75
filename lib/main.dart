@@ -33,127 +33,129 @@ class _HomeState extends State<Home> {
         title: Text('Home'),
         backgroundColor: Colors.white,
       ),
-      // body: ListView(
-      //   children: [ //SingleChildScrollView eta use kara jay==// row teke coloum a niya
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 1'),
-      //       ),
-      //     ),
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 1'),
-      //       ),
-      //     ),
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 1'),
-      //       ),
-      //     ),
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 1'),
-      //       ),
-      //     ),
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 1'),
-      //       ),
-      //     ),
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 1'),
-      //       ),
-      //     ),
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 2'),
-      //       ),
-      //     ),
-      //     SizedBox(
-      //       height: 100,
-      //       width: 100,
-      //       child: Center(
-      //         child: Text('Box 3'),
-      //       ),
-      //     )
-      //   ],
-      //   body: ListView.builder(
-      //     itemCount: 1000, //0-999
-      //   itemBuilder: (context, index){
-      //       return SizedBox(
-      //       width: 100,
-      //       height: 100,
-      // child: Center(child: Text(index.toString())),
-      //       );
-      // },
-      //   ),
-        body: ListView.separated(
-          itemCount: friendlist.length,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 100,
+              width: 100,
+              //color: Colors.green,
+              //padding: EdgeInsets.all(16),
+              // padding: EdgeInsets.symmetric( //2 dike padding chile
+              //   vertical: 8,
+              //   horizontal: 4,
+              // ),
+              padding: EdgeInsets.only(
+                bottom: 6, //jee kuno 1k dike dile
+              ),
+              margin: EdgeInsets.all(8),
+              alignment: Alignment.topCenter,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                border: Border.all(color: Colors.black45, width: 4),
+                //borderRadius: BorderRadius.circular(16),
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(16),
+                //   bottomRight: Radius.circular(8),
+                // ),
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/image/shaky.jpg'),
+                  fit: BoxFit.cover,
+                  opacity: .4
+                ),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0,3),// change position of the shedow
 
-          //scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index){
-           return ListTile(
-             tileColor: Colors.green.shade50,
-             title: Text(friendlist[index]),
-             subtitle: Text('School friends'),
-             trailing: Column(
-               children: [
-                 Icon(Icons.add),
-                 Text('Active')
-               ],
-             ),
-             onTap: (){
-               print('$index item tapped');
-             },
-             titleTextStyle: TextStyle(
-               fontStyle: 18,
-               color: Colors.grey,
-             )
-           );
-          },
-          separatorBuilder: (context, index) {
-            return Divider(
-              //height: 10,
-              color: Colors.green,
-              thickness: 5,
-              endIndent: 16,
-              indent: 4,
-            );
-            return Text('this is $index separator');
-          },
-         ),
-      //  body: GridView.builder(
-      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      //       crossAxisCount: 3,
-      //       crossAxisSpacing: 4,
-      //       mainAxisSpacing: 10,
-      //     childAspectRatio: 1,
-      //   ),
-      //   itemCount: friendlist.length,
-      //   itemBuilder: (context, index) {
-      //     return Column(
-      //       children: [
-      //         Text(index.toString()),
-      //         Text(friendlist[index]),
-      //       ],
-      //     );
-      //   },
-      // ),
+                  )
+                ]
+              ),
+              child: Text('Ruman'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text('shaku'),
+            ),
+            ElevatedButton(onPressed: (){
+             // showAboutDialog(context: context, applicationName: 'Sample',
+             //     applicationVersion: '1.0.1',
+             // children: [
+             //   Text('Sample text'),
+             // ])
+              // ;
+              showDialog(context: context,
+                  barrierDismissible: false,
+                  barrierColor: Colors.black38,
+                  //58 minute done
+                  builder: (ctx) {
+                return AlertDialog(
+                  title: Text('Its out customom dialog'),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Ruman chowdhur'),
+                      Text('Ruman chowdhur'),
+                      Text('Ruman chowdhur'),
+                    ],
+                  ),
+                  actions: [
+                    TextButton(onPressed: (){
+                      Navigator.pop(context);
+                    }, child: Text('Cancel'),
+                    ),
+                    TextButton(onPressed: (){}, child: Text('Okey'),
+                    ),
+                  ],
+                  shape: RoundedRectangleBorder(
+                   // borderRadius: BorderRadius.circular(8)
+                    borderRadius: BorderRadius.zero,
+                  ),
+                  backgroundColor: Colors.white,
+                );
+              });
+            }, child: Text('Dialog'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(onPressed: (){ //bottom shade button
+              showModalBottomSheet(
+                backgroundColor: Colors.white24,
+                barrierColor: Colors.black54,
+                isDismissible: false,
+                enableDrag: false,
+                context: context, builder: (ctx){
+                return SizedBox(
+                  height: 600,
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('title'),
+                      ),
+                      Divider(),
+                      Column(
+                        children: [
+                          Text('jklkj'),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+              );
+            },
+                child: Text('show bottom shade'),
+            ), //ekhane ses bottom shade button
+          ],
+        ),
+      ),
     );
   }
 }
