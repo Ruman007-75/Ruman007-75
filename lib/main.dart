@@ -1,6 +1,8 @@
+//import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 
-// listView, DridView, sizeBox,listTile
+// Textfield, thememode,dark and light mode
 void main() {
   runApp(IntroApp());
 }
@@ -12,6 +14,107 @@ class IntroApp extends StatelessWidget {
       debugShowCheckedModeBanner: true,
       home: Home(),
       title: 'IntroApp',
+      theme: ThemeData(
+        brightness: Brightness.light,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.green,
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.2,
+          )
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.amber,
+            textStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            )
+          )
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                  color: Colors.deepPurple,
+                  width: 2
+              )
+          ),
+          disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                  color: Colors.green,
+                  width: 2
+              )
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: Colors.yellow,
+              )
+          ),
+          labelStyle: TextStyle(
+            fontSize: 16,
+          ),
+          hintStyle: TextStyle(
+            color: Colors.purple.shade200,
+          ),
+
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.yellow,
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1.2,
+            )
+        ),
+        textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+                foregroundColor: Colors.amber,
+                textStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w200,
+                )
+            )
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                  color: Colors.deepPurple,
+                  width: 2
+              )
+          ),
+          disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                  color: Colors.green,
+                  width: 2
+              )
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: Colors.yellow,
+              )
+          ),
+          labelStyle: TextStyle(
+            fontSize: 16,
+          ),
+          hintStyle: TextStyle(
+            color: Colors.purple.shade200,
+          ),
+
+        ),
+      ),
+      themeMode: ThemeMode.system,
     );
   }
 }
@@ -24,138 +127,148 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> friendlist = ['Ruman', 'Sunny', 'Sujon', 'Jayed', 'hasan'];
-
+  TextEditingController _descriptionTEController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Home'),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 100,
-              width: 100,
-              //color: Colors.green,
-              //padding: EdgeInsets.all(16),
-              // padding: EdgeInsets.symmetric( //2 dike padding chile
-              //   vertical: 8,
-              //   horizontal: 4,
-              // ),
-              padding: EdgeInsets.only(
-                bottom: 6, //jee kuno 1k dike dile
-              ),
-              margin: EdgeInsets.all(8),
-              alignment: Alignment.topCenter,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                border: Border.all(color: Colors.black45, width: 4),
-                //borderRadius: BorderRadius.circular(16),
-                // borderRadius: BorderRadius.only(
-                //   topLeft: Radius.circular(16),
-                //   bottomRight: Radius.circular(8),
-                // ),
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage('assets/image/shaky.jpg'),
-                  fit: BoxFit.cover,
-                  opacity: .4
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextField(
+                enabled: true,
+                decoration: InputDecoration(
+                  label: Text('Name'),
+                  labelStyle: TextStyle(
+                    fontSize: 16,
+                  ),
+                  hintText: 'enter your name',
+                  hintStyle: TextStyle(
+                    color: Colors.green.shade200,
+                  ),
+                  icon: Icon(Icons.add),
+                  prefix: Icon(Icons.search),
+                  suffixIcon: TextButton(
+                    child: Text('search'),
+                    onPressed: (){},
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(
+                      color: Colors.deepPurple,
+                      width: 2
+                    )
+                  ),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(
+                      color: Colors.green,
+                      width: 2
+                    )
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(
+                      color: Colors.yellow,
+                    )
+                  ),
                 ),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0,3),// change position of the shedow
-
-                  )
-                ]
               ),
-              child: Text('Ruman'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text('shaku'),
-            ),
-            ElevatedButton(onPressed: (){
-             // showAboutDialog(context: context, applicationName: 'Sample',
-             //     applicationVersion: '1.0.1',
-             // children: [
-             //   Text('Sample text'),
-             // ])
-              // ;
-              showDialog(context: context,
-                  barrierDismissible: false,
-                  barrierColor: Colors.black38,
-                  //58 minute done
-                  builder: (ctx) {
-                return AlertDialog(
-                  title: Text('Its out customom dialog'),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Ruman chowdhur'),
-                      Text('Ruman chowdhur'),
-                      Text('Ruman chowdhur'),
-                    ],
+              SizedBox(height: 16,),
+              TextField(
+                enabled: true,
+                controller: _descriptionTEController,
+                maxLines: 5,
+                maxLength: 200,
+                onTap: (){
+                  print('Taped on taxed field');
+                },
+                onChanged: (String value){
+                  print('value');
+                },
+                decoration: InputDecoration(
+                  label: Text('Description'),
+                  labelStyle: TextStyle(
+                    fontSize: 16,
                   ),
-                  actions: [
-                    TextButton(onPressed: (){
-                      Navigator.pop(context);
-                    }, child: Text('Cancel'),
-                    ),
-                    TextButton(onPressed: (){}, child: Text('Okey'),
-                    ),
-                  ],
-                  shape: RoundedRectangleBorder(
-                   // borderRadius: BorderRadius.circular(8)
-                    borderRadius: BorderRadius.zero,
+                  hintText: 'Enter your Description',
+                  hintStyle: TextStyle(
+                    color: Colors.green.shade200,
                   ),
-                  backgroundColor: Colors.white,
-                );
-              });
-            }, child: Text('Dialog'),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(onPressed: (){ //bottom shade button
-              showModalBottomSheet(
-                backgroundColor: Colors.white24,
-                barrierColor: Colors.black54,
-                isDismissible: false,
-                enableDrag: false,
-                context: context, builder: (ctx){
-                return SizedBox(
-                  height: 600,
-                  width: double.infinity,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('title'),
-                      ),
-                      Divider(),
-                      Column(
-                        children: [
-                          Text('jklkj'),
-                        ],
-                      ),
-                    ],
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                          color: Colors.deepPurple,
+                          width: 2
+                      )
                   ),
-                );
-              },
-              );
-            },
-                child: Text('show bottom shade'),
-            ), //ekhane ses bottom shade button
-          ],
+                  disabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 2
+                      )
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                        color: Colors.yellow,
+                      )
+                  ),
+                ),
+              ),
+              SizedBox(height: 16,),
+              TextField(
+                enabled: true,
+        
+                onChanged: (String value){
+                  print('value');
+                },
+                obscureText: true,
+                controller: TextEditingController(// etr dekte pare,update kore,re save kore
+        
+                ),
+                decoration: InputDecoration(
+                  label: Text('Passward'),
+                  labelStyle: TextStyle(
+                    fontSize: 16,
+                  ),
+                  hintText: 'Enter your Passward',
+                ),
+              ),
+              SizedBox(height: 16,),
+              TextField(),
+              TextButton(onPressed: (){
+              //  _descriptionTEController.text= 'Clear';
+                _descriptionTEController.clear();
+              }, child: Text('Cear description'))
+        
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        //backgroundColor: Colors.blue, //upore theme set kora takle ekkene dite hoi na
+        title: Text('Setting'),
+      ),
+    );
+  }
+}
+
