@@ -1,47 +1,95 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(IntroApp());
+void main(){
+  runApp(DevicePreview(
+    enabled: true,
+    builder: (context) => MyApp(), // Wrap your app
+  ),);
 }
-
-class IntroApp extends StatelessWidget {
-  const IntroApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Greating App'),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              Text(
-                'Hellow, World',
-                style: TextStyle(color: Colors.redAccent,
-                fontWeight: FontWeight.bold
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+    print(mediaQuery.size.width);
+    print(mediaQuery.size.height);
+    print(mediaQuery.size.aspectRatio);
+    print(mediaQuery.size.flipped.height);
+    print(mediaQuery.size);
+    if(mediaQuery.size.width<640){
+      print('This is a phone');
+    } else if(mediaQuery.size.width<640 && mediaQuery.size.width>1008){
+      print('This is a tablet');
+    } else {
+      print('LAPTOP/DESKTOP');
+    }
+
+    return Scaffold(
+    appBar: AppBar(
+      title: Text('Home'),
+    ),
+     /* body: OrientationBuilder(
+        builder: (context, Orientation orientation) {
+          print(orientation);
+          if(orientation == Orientation.portrait){
+            return Column(
+              children: [
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 16,
+                  children: [
+                    Text('fjfjfhfdjhdhghg'),
+                    Text('fjfjfhfdjhdhghg'),
+                    Text('fjfjfhfdjhdhghg'),
+                    Text('fjfjfhfdjhdhghg'),
+                    Text('fjfjfhfdjhdhghg'),
+                  ],
                 ),
-              ),
-              Text('Welcome to Flutter !'),
-              Image.asset('assets/image/flutter.png'),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('Press Me',),
-               // style: ButtonStyle(backgroundColor: Colors.green),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  )
-                ),
-              ),
-            ],
-          ),
-        ),
+                Text(orientation.name)
+              ],
+            );
+          }else {
+            return Center(
+              child: Text('Too big Screen'),
+            );
+          }
+
+        }
+      ),*/
+      body: LayoutBuilder(
+        builder: (context, BoxConstraints constraints) {
+          if(constraints.maxWidth<640){
+            return Text('This is a phone');
+          } else if(constraints.maxWidth<640 && constraints.maxWidth>1008){
+            return Text('This is a tablet');
+          } else {
+            return Text('LAPTOP/DESKTOP');
+          }
+
+        },
       ),
     );
   }
 }
+
