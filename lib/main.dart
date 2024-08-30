@@ -48,46 +48,17 @@ class Home extends StatelessWidget {
     appBar: AppBar(
       title: Text('Home'),
     ),
-    /*  body: OrientationBuilder(
-        builder: (context, Orientation orientation) {
-          print(orientation);
-          if(orientation == Orientation.portrait){
-            return Column(
-              children: [
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 16,
-                  children: [
-                    Text('fjfjfhfdjhdhghg'),
-                    Text('fjfjfhfdjhdhghg'),
-                    Text('fjfjfhfdjhdhghg'),
-                    Text('fjfjfhfdjhdhghg'),
-                    Text('fjfjfhfdjhdhghg'),
-                  ],
-                ),
-                Text(orientation.name)
-              ],
-            );
-          }else {
-            return Center(
-              child: Text('Too big Screen'),
-            );
-          }
-
-        }
-      ),*/
-      body: LayoutBuilder(
-        builder: (context, BoxConstraints constraints) {
-          if(constraints.maxWidth<640){
-            return Text('This is a phone');
-          } else if(constraints.maxWidth<640 && constraints.maxWidth>1008){
-            return Text('This is a tablet');
-          } else {
-            return Text('LAPTOP/DESKTOP');
-          }
-
-        },
+      body: Container(
+        height: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.yellow,
+        child: FractionallySizedBox(
+          widthFactor: 0.5,
+          heightFactor: 0.5,
+          child: Container(
+            color: Colors.green,
+          ),
+        ),
       ),
     );
   }
