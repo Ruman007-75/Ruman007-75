@@ -1,6 +1,4 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -70,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen>{
     );
   }
 
-}
+} */
 /*
 class Home extends StatelessWidget {
    Home({super.key});
@@ -95,3 +93,10 @@ class Home extends StatelessWidget {
   }
 }
 */
+
+import 'package:flutter/cupertino.dart';
+import 'package:osad_batch_seven/sum_app.dart';
+
+void main(){
+  runApp(const SumApp());
+}
