@@ -95,8 +95,8 @@ class Home extends StatelessWidget {
 */
 
 import 'package:flutter/cupertino.dart';
-import 'package:osad_batch_seven/sum_app.dart';
+import 'package:osad_batch_seven/water_app_final.dart';
 
 void main(){
-  runApp(const SumApp());
+  runApp(const WaterAppFinal());
 }
