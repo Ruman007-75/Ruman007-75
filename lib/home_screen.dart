@@ -118,5 +118,9 @@ class _HomeScreenState extends State<HomeScreen> {
       waterTrackList.removeAt(index);
     });
   }
+  void dispose(){
+    _glassNoTEcontroller.dispose();
+    super.dispose();
+  }
 }
 
