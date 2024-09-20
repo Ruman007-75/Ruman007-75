@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:osad_batch_seven/model/product.dart';
 import 'package:osad_batch_seven/screen/update_product_screen.dart';
 
 class buildProductList extends StatelessWidget {
   const buildProductList({
-    super.key,
+    super.key, required this.product,
   });
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +16,14 @@ class buildProductList extends StatelessWidget {
       ),
       tileColor: Colors.white,
       //tileColor: Theme.of(context).scaffoldBackgroundColor,
-      title: Text('Product name'),
+      title: Text(product.produstName),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Product code: CODE'),
-          Text('Price: \$120'),
-          Text('Quantity:2'),
-          Text('Total Price: \$240'),
+          Text('Product code: \$${product.productcode}'),
+          Text('Price: \$${product.unitePrice}'),
+          Text('Quantity:${product.quantity}'),
+          Text('Total Price: \$${product.totalPrice}'),
           Divider(),
           ButtonBar(
             children: [
