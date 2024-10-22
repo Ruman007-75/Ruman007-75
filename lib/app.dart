@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:task_manager/ui/screens/splash_screen.dart';
 import 'package:task_manager/ui/utils/app_colors.dart';
 
-class taskManagerApp extends StatefulWidget {
-  const taskManagerApp({super.key});
+class TaskManagerApp extends StatefulWidget {
+  const TaskManagerApp({super.key});
+
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
-  State<taskManagerApp> createState() => _taskManagerAppState();
+  State<TaskManagerApp> createState() => _TaskManagerAppState();
 }
 
-class _taskManagerAppState extends State<taskManagerApp> {
+class _TaskManagerAppState extends State<TaskManagerApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: TaskManagerApp.navigatorKey,
       theme: ThemeData(
         colorSchemeSeed: AppColors.themeColor,
         textTheme: const TextTheme(),
@@ -27,14 +29,14 @@ class _taskManagerAppState extends State<taskManagerApp> {
   ElevatedButtonThemeData _elevatedButtonThemeData() {
     return ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.themeColor,
-      foregroundColor: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-      fixedSize: const Size.fromWidth(double.maxFinite),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ));
+          backgroundColor: AppColors.themeColor,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+          fixedSize: const Size.fromWidth(double.maxFinite),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ));
   }
 
   InputDecorationTheme _inputDecorationTheme() {
@@ -58,3 +60,4 @@ class _taskManagerAppState extends State<taskManagerApp> {
     );
   }
 }
+
