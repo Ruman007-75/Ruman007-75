@@ -19,7 +19,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _addNewTaskInProgress = false;
   bool _shootRefreshPreviousPage = false;
-////
+////////
   @override
   Widget build(BuildContext context) {
     return PopScope(
