@@ -39,6 +39,7 @@ class _CancelledTaskScreenState extends State<CancelledTaskScreen> {
           itemBuilder: (context, index) {
             return TaskCard(
               taskModel: _cancelledTaskList[index],
+              onRefreshList: _getCancelledTaskList,
             );
           },
           separatorBuilder: (context, index) {
@@ -55,8 +56,8 @@ class _CancelledTaskScreenState extends State<CancelledTaskScreen> {
     final NetworkResponse response =
     await NetworkCaller.getRequest(url: Urls.cancelledTaskList);
     if(response.isSuccess){
-      final TaskListModel taskListModel = TaskListModel.fromJson(response.responseDate);
-      _cancelledTaskList = taskListModel.task_list ?? [];
+      final TaskListModel taskListModel = TaskListModel.fromJson(response.responseData);
+      _cancelledTaskList = taskListModel.tasklist ?? [];
     }else{
       showSnackBarMessage(context, response.errorMessage, true);
     }

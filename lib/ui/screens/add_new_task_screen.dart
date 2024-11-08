@@ -19,15 +19,16 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _addNewTaskInProgress = false;
   bool _shootRefreshPreviousPage = false;
-////////
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      /*onWillPop: () async {
+      onPopInvokedWithResult: (didPop, result) {
+        if(didPop){
+          return;
+        }
         Navigator.pop(context, _shootRefreshPreviousPage);
-        return false;
-      },*/
+      },
       child: Scaffold(
         appBar: const TMAppBar(),
         body: SingleChildScrollView(
@@ -42,6 +43,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                   Text('Add New Task',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w600,
+                        // copy with mne>> eitr theme teke extra kitchu idol neya jay
                       )),
                   const SizedBox(height: 24),
                   TextFormField(

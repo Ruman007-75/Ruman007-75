@@ -21,7 +21,7 @@ class NetworkCaller {
         return NetworkResponse(
             isSuccess: true,
             statusCode: response.statusCode,
-            responseDate: decodeData);
+            responseData: decodeData);
       } else if (response.statusCode == 401) {
         _moveToLogin();
         return NetworkResponse(
@@ -80,7 +80,7 @@ class NetworkCaller {
         return NetworkResponse(
             isSuccess: true,
             statusCode: response.statusCode,
-            responseDate: decodeData);
+            responseData: decodeData);
       } else {
         return NetworkResponse(
           isSuccess: false,

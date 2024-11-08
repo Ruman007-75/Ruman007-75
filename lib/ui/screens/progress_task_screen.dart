@@ -38,6 +38,7 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
           itemBuilder: (context, index) {
             return TaskCard(
               taskModel: _progressTaskList[index],
+              onRefreshList: _getProgressTaskList,
             );
           },
           separatorBuilder: (context, index) {
@@ -54,8 +55,8 @@ class _ProgressTaskScreenState extends State<ProgressTaskScreen> {
     final NetworkResponse response =
     await NetworkCaller.getRequest(url: Urls.progressTaskList);
     if(response.isSuccess){
-      final TaskListModel taskListModel = TaskListModel.fromJson(response.responseDate);
-      _progressTaskList = taskListModel.task_list ?? [];
+      final TaskListModel taskListModel = TaskListModel.fromJson(response.responseData);
+      _progressTaskList = taskListModel.tasklist ?? [];
     }else{
       showSnackBarMessage(context, response.errorMessage, true);
     }

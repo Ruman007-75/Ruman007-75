@@ -40,6 +40,7 @@ class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
           itemBuilder: (context, index) {
             return TaskCard(
               taskModel: _completedTaskList[index],
+              onRefreshList: _getCompletedTaskList,
             );
           },
           separatorBuilder: (context, index) {
@@ -49,15 +50,15 @@ class _CompletedTaskScreenState extends State<CompletedTaskScreen> {
       ),
     );
   }
-  Future<void> _getCompletedTaskList()async {
+  Future<void> _getCompletedTaskList() async {
     _completedTaskList.clear();
     _getCompletedTaskListInProgress= true;
     setState(() {});
     final NetworkResponse response =
     await NetworkCaller.getRequest(url: Urls.completedTaskList);
     if(response.isSuccess){
-      final TaskListModel taskListModel = TaskListModel.fromJson(response.responseDate);
-      _completedTaskList = taskListModel.task_list ?? [];
+      final TaskListModel taskListModel = TaskListModel.fromJson(response.responseData);
+      _completedTaskList = taskListModel.tasklist ?? [];
     }else{
       showSnackBarMessage(context, response.errorMessage, true);
     }
