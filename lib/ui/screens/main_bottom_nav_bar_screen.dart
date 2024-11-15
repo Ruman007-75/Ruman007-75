@@ -6,14 +6,15 @@ import 'package:task_manager/ui/screens/progress_task_screen.dart';
 import 'package:task_manager/ui/utils/app_colors.dart';
 import 'package:task_manager/ui/widgets/tm_app_bar.dart';
 
-class MainBottomNavBar extends StatefulWidget {
-  const MainBottomNavBar({super.key});
+class MainBottomNavBarScreen extends StatefulWidget {
+  static const String name= '/home';
+  const MainBottomNavBarScreen({super.key});
 
   @override
-  State<MainBottomNavBar> createState() => _MainBottomNavBarState();
+  State<MainBottomNavBarScreen> createState() => _MainBottomNavBarScreenState();
 }
 
-class _MainBottomNavBarState extends State<MainBottomNavBar> {
+class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   int _selectedIndex = 0;
   final List<Widget> _screens = const [
     NewTaskScreen(),
