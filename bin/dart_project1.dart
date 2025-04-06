@@ -1,23 +1,25 @@
-main() {
-  int age = 25;
-  // jodi karo age 21 er beshi hoi, then he is "man"
-  //  if (condition) {
-  //    body
-  //  }
-  if (age >= 21) {
-    print('man');
-  } else if (age >= 11) {
-    print('Boy');
-  } else {
-    print('Baby boy');
-  }
-  String userName = 'Sunny';
+// a) Abstract class Vehicle
+abstract class Vehicle {
+  int _speed = 0; // encapsulated variable
 
-  if (userName == 'Sunny' && age > 20) {
-    print('Username is $userName');
+  void setSpeed(int speed) {
+    _speed = speed;
   }
 
-  if (userName == 'Shamim' || userName == 'Sunny') {
-    print('welcome home');
+  void move();
+}
+
+// b) Subclass Car extends Vehicle
+class Car extends Vehicle {
+  @override
+  void move() {
+    print('The car is moving at $_speed km/h');
   }
+}
+
+// d) Main function
+void main() {
+  Car myCar = Car();
+  myCar.setSpeed(80);
+  myCar.move();
 }
